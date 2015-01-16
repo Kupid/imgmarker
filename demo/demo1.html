@@ -8,11 +8,12 @@
 body{background-color:#212830;}
 .demo1{width:698px;height:243px;position:fixed;top:50%;left:50%;margin-top:-121px;margin-left:-349px;}
 .log{position:fixed;top:4px;left:4px;border:none;color:#fff;font-size:12px;width:120px;height:auto;}
+#style{position:absolute;left:0px;bottom:0px;width:132px;height:69px;background-image:url("demo1_1.png");cursor:pointer;display:none;}
 </style>
 <title>demo</title>
 <script>
 	var pos=[{"x":2,"y":200,"w":120,"h":50,
-		 	"title":"华润支路","point":"left-middle","event":"yellow"
+		 	"title":"华润支路","point":"left-middle","event":{"click":"yellow","hover":["hover1","hover2"]}
 		 	},
 			{"x":345,"y":85,"w":37,"h":21,
 			 "title":"Type01","point":"left-top","event":"red"
@@ -47,11 +48,25 @@ body{background-color:#212830;}
 			"imgurl":"demo1.png",
 			"pos":pos,
 			"events":{
-				"yellow":function(event){
+				"yellow":function(event,ui){
 					$("#log").append("<br/><a style='color:#f9ff41'>"+this.title+"</a>");
 				},
-				"red":function(event){
+				"red":function(event,ui){
 					$("#log").append("<br/><a style='color:#ff0000'>"+this.title+"</a>");
+				},
+				"hover1":function(event,ui){
+					ui.img.append($("#style").show());
+				},
+				"hover2":function(event,ui){
+					$("#style").hide();
+				},
+				"hover3":function(event,ui){
+					ui.img.append($("#style"));
+					if($("#style").is(":visible")){
+						$("#style").hide();
+					}else{
+						$("#style").show();
+					}
 				}
 			}
 		});
@@ -61,5 +76,6 @@ body{background-color:#212830;}
 <body>
 <div id="log" class="log"></div>
 <div id="demo1" class="demo1" ></div>
+<div id="style" />
 </body>
 </html>
