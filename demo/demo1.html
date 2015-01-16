@@ -1,0 +1,65 @@
+﻿<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<script type="text/javascript" src="../js/jquery-1.7.2.min.js"></script>
+<script type="text/javascript" src="../js/jquery.imgmarker.js"></script>
+<style>
+body{background-color:#212830;}
+.demo1{width:698px;height:243px;position:fixed;top:50%;left:50%;margin-top:-121px;margin-left:-349px;}
+.log{position:fixed;top:4px;left:4px;border:none;color:#fff;font-size:12px;width:120px;height:auto;}
+</style>
+<title>demo</title>
+<script>
+	var pos=[{"x":2,"y":200,"w":120,"h":50,
+		 	"title":"华润支路","point":"left-middle","event":"yellow"
+		 	},
+			{"x":345,"y":85,"w":37,"h":21,
+			 "title":"Type01","point":"left-top","event":"red"
+		 	},
+		 	{"x":347,"y":224,"w":37,"h":21,
+			 "title":"Type01","point":"left-top","event":"red"
+		 	},
+		 	{"x":424,"y":136,"w":21,"h":40,
+			 "title":"Type02","point":"left-top","event":"red"
+			},
+			{"x":506,"y":180,"w":15,"h":15,
+			 "title":"P","point":"left-top","event":"yellow"
+			},
+			{"x":551,"y":180,"w":40,"h":35,
+			 "title":"Type03","point":"left-top","event":"yellow"
+			},
+			{"x":599,"y":180,"w":15,"h":15,
+			"title":"P","point":"left-top","event":"yellow"
+			},
+			{"x":617,"y":180,"w":15,"h":15,
+			 "title":"PT","point":"left-top","event":"yellow"
+			},
+			{"x":639,"y":180,"w":15,"h":15,
+			 "title":"T","point":"left-top","event":"yellow"
+			},
+			{"x":663,"y":180,"w":15,"h":15,
+			 "title":"TT","point":"left-top","event":"yellow"
+			}
+		 ];
+	$(function(){
+		$("#demo1").imgmarker({
+			"imgurl":"demo1.png",
+			"pos":pos,
+			"events":{
+				"yellow":function(event){
+					$("#log").append("<br/><a style='color:#f9ff41'>"+this.title+"</a>");
+				},
+				"red":function(event){
+					$("#log").append("<br/><a style='color:#ff0000'>"+this.title+"</a>");
+				}
+			}
+		});
+	});
+</script>
+</head>
+<body>
+<div id="log" class="log"></div>
+<div id="demo1" class="demo1" ></div>
+</body>
+</html>
