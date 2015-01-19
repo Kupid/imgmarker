@@ -1,5 +1,38 @@
 /*
+This plugin will make some marks on a image.
+By this, something on the image an be clicked.
 
+Example:
+$div.imgmarker(opt);
+
+opt: An object.
+{
+imgurl:"demo.jpg", //the image url
+width:false,  //image width, false means use the $div.width() as the width of image
+height:false, 
+pos:[p1,p2,p3], //Array , p1,p2,p3 are objects of marks
+events:{"e1":function(){},"e2":function(){}} // some functions 
+}
+
+pos:
+pos is an array, every element in the array is the object like this:
+{
+"x":2,
+"y":200,
+"w":120,
+"h":50,
+"title":"title",
+"point":"left-middle",
+"event":{"click":"e1","hover":["e1","e2"],"mark":"e2"}
+}
+this element means a mark on the image.
+x:x-position of the mark on this image
+y:y-position of the mark on this image
+w:width of the mark
+h:height of the mark
+title:title of the mark
+point:such as "left-top", means the (x,y) is left-top point of this mark
+event:{"eventName":"functionName"} the functionName is in the opt.events
  */
 ;(function($){
 	$.fn.imgmarker=function(opts){
