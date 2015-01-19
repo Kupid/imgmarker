@@ -41,16 +41,18 @@ event:{"eventName":"functionName"} the functionName is in the opt.events
 				"width":false,
 				"height":false,
 				"pos":[],
-				"events":{}
+				"events":{},
+				"z":1000
 		};
 		
 		$.extend(settings,opts);
 		return this.each(function(){
-			var $this=$(this),$img=$("<div />"),_z=1000;
+			var $this=$(this),$img=$("<div />"),_z=settings.z;
 			$this.empty();
 			$img.css({"background-image":"url('"+settings.imgurl+"')",
 					  "background-repeat":"no-repeat",
-					  "position":"relative"
+					  "position":"relative",
+					  "z-index":_z
 			});
 			$img.width(settings.width||$this.width()).height(settings.height||$this.height());
 			$this.html($img);
