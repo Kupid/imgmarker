@@ -50,7 +50,7 @@
 				case "string":
 					if(typeof(settings.events[p.event])=="function"){
 						$div.click(function(p,settings,$img){return function(event){
-							settings.events[p.event].call(p,event,{"point":$(this),"img":$img});
+							settings.events[p.event].call(p,event,{"mark":$(this),"img":$img});
 						};}(p,settings,$img));
 					}
 					break;
@@ -60,26 +60,26 @@
 						if(_key.toLowerCase()=="hover"){
 							if(typeof(p.event[_key])=="string"){
 								$div.hover(function(p,settings,_key,$img){return function(event){
-									settings.events[p.event[_key]].call(p,event,{"point":$(this),"img":$img});
+									settings.events[p.event[_key]].call(p,event,{"mark":$(this),"img":$img});
 								};}(p,settings,_key,$img),function(p,settings,_key,$img){return function(event){
-									settings.events[p.event[_key]].call(p,event,{"point":$(this),"img":$img});
+									settings.events[p.event[_key]].call(p,event,{"mark":$(this),"img":$img});
 								};}(p,settings,_key,$img));
 							}else if(typeof(p.event[_key])=="object"){
 								$div.hover(function(p,settings,_key,$img){return function(event){
-									settings.events[p.event[_key][0]].call(p,event,{"point":$(this),"img":$img});
+									settings.events[p.event[_key][0]].call(p,event,{"mark":$(this),"img":$img});
 								};}(p,settings,_key,$img),function(p,settings,_key,$img){return function(event){
-									settings.events[p.event[_key][1]].call(p,event,{"point":$(this),"img":$img});
+									settings.events[p.event[_key][1]].call(p,event,{"mark":$(this),"img":$img});
 								};}(p,settings,_key,$img));
 							}
 						}else{
 							$div.bind(_key,function(p,settings,_key,$img){return function(event){
-								settings.events[p.event[_key]].call(p,event,{"point":$(this),"img":$img});
+								settings.events[p.event[_key]].call(p,event,{"mark":$(this),"img":$img});
 							};}(p,settings,_key,$img));
 						}
 					}
 					break;
 				}
-				
+				$div.trigger("mark");
 			});
 		});
 	};
